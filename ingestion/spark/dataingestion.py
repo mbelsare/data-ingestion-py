@@ -13,6 +13,7 @@ def load_spark_session() -> SparkSession:
         .config('spark.sql.execution.arrow.pyspark.enabled', 'false') \
         .config('spark.driver.bindAddress', '127.0.0.1') \
         .config('spark.driver.host', 'localhost') \
+        .config('spark.jars', '/usr/share/java/mysql-connector-j-8.0.33.jar') \
         .getOrCreate()
 
 
