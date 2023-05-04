@@ -21,6 +21,11 @@ setup(
     maintainer_email='manishbelsare2003@gmail.com',
     url="https://github.com/mbelsare/data-ingestion-py",
     packages=find_packages(),
+    entry_points={
+        'console_scripts': [
+            'ingest_data=ingestion.spark.dataingestion:main',
+        ],
+    },
     include_package_data=True,
     package_data={
         "": ["*"],
