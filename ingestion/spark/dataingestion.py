@@ -76,7 +76,7 @@ def ingest_data(
 
     df.write.format('jdbc').options(
         url=f'jdbc:mysql://{mysql_host}:{mysql_port}/{mysql_db}',
-        driver='com.mysql.jdbc.Driver',
+        driver='com.mysql.cj.jdbc.Driver',
         dbtable=f'{mysql_table}',
         user=f'{db_user}',
         password=f'{db_password}') \

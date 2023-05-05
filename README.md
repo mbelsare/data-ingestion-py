@@ -25,8 +25,7 @@ docker pull mysql
 docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql
 docker exec -it mysql /bin/sh
 ```
-
-* Once logged into the docker container, enter MySQL prompt using below command
+* Once logged into the docker container, wait for a few seconds & then enter MySQL prompt using below command
 ```
 mysql -u root -p
 ```
@@ -107,4 +106,4 @@ docker run -e "<key=value>" ingestion:0.1
 ```
 --mysql_host | --mysql_port | --mysql_db | --mysql_table | --db_user | --db_password
 ```
-then the code will pick up default values set to `localhost`.
+then the code will use default values set to `localhost`.
