@@ -95,7 +95,7 @@ def main():
                              required=False,
                              default='localhost',
                              type=str,
-                             help=f'MySQL DB hostname'
+                             help=f'MySQL DB hostname/IP'
                              )
     args_parser.add_argument('--mysql_port',
                              required=False,

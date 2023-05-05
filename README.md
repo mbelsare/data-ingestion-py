@@ -34,8 +34,6 @@ and enter password as `root`
 
 * Run the commands in `person.sql` script provided at the root of the repo to create a database and table in MySQL.
 
-* After activating `venv`, make sure `spark` is installed by running `pyspark` on your terminal. It should bring up a spark-shell
-
 Setup
 =====
 **1. Clone the repo**
@@ -60,6 +58,8 @@ If you prefer to work from shell / vim / working on remote host:
 
     pip install -r requirements.txt
 
+* After activating `venv`, make sure `spark` is installed by running `pyspark` on your terminal. It should bring up a spark-shell
+
 Module Overview
 ====
 The ingestion module has 3 functional scripts:
@@ -67,10 +67,15 @@ The ingestion module has 3 functional scripts:
 2. Spark Session initializer in `sparkinitializer.py`
 3. DataFrame's operations in `dataframe_operations.py`
 
+Execution challenges:
+====
+* If the docker container runs into `java.net.ConnectException: Connection refused (Connection refused)`, then you might need to provide the hostname to IP of the MySQL docker container or change default value in `dataingestion.py` argument parser.
+* Second option is to build a `wheel` package of the project as provided in `Deploment Options` -> **2.1** and run the package with any runtime options.
+
 Deployment Options
 ====
 
-## Deploying using Docker
+## 1. Deploying using Docker
 * The `Dockerfile` has been added to the project to build from source
 ```
 docker build --tag ingestion:0.1 .
@@ -82,7 +87,7 @@ docker run ingestion:0.1
 docker run -e "<key=value>" ingestion:0.1
 ```
 
-## Build a wheel distribution of the project
+## 2.1 Build a wheel distribution of the project
 
     cd data-ingestion-py
     python setup.py bdist_wheel
@@ -93,7 +98,7 @@ docker run -e "<key=value>" ingestion:0.1
 
 **PS**: For the purpose of building the wheel and creating an entrypoint, all functions are merged in `dataingestion.py` but the ultimate goal is to modularize each into its own classes
 
-### Run the package
+### 2.2 Run the package
 
 * Once your package is installed, you can run your script from the command line using the entry point you specified in your setup.py file. In this example, you would run:
 ```
