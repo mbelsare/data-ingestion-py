@@ -98,12 +98,11 @@ docker run -e "<key=value>" ingestion:0.1
 
 **PS**: For the purpose of building the wheel and creating an entrypoint, all functions are merged in `dataingestion.py` but the ultimate goal is to modularize each into its own classes
 
-### 2.2 Run the package
+## 2.2 Run the package
 
-* Once your package is installed, you can run your script from the command line using the entry point you specified in your setup.py file. In this example, you would run:
-```
-ingest_data --input_path <path/to/input/csv/file>
-```
+    ingest_data --input_path <path/to/local/input/csv/file>
+
+* Once your package is installed, you can run your script from the command line using the entry point you specified in your setup.py file. In this example, you would run above command ->
 * If no additional arguments are provided to above entrypoint command eg. 
 ```
 --mysql_host | --mysql_port | --mysql_db | --mysql_table | --db_user | --db_password
